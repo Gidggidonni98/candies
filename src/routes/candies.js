@@ -23,9 +23,9 @@ router.get('/:id', async(req,res) => {
 
 router.post('/create', async(req, res) => {
     const {name, price, expiration, isSalad} = req.body;
-    var date = new.Date();
+    var dateCreated = new Date().toISOString();
     const candie = {
-        name, price, expiration, isSalad, date_registered: date, date_created: date, status: 1
+        name, price, expiration, isSalad, date_registered: dateCreated, date_created: dateCreated, status: 1
     };
     
     await pool.query('INSERT INTO candies set ?' , [candie]);
